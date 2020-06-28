@@ -1,9 +1,11 @@
+
 //import statements
 import java.util.*;
 
 public class Email {
     public static void main(final String[] args) {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
         String email = "", firstName, lastName, company;
         final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         final Scanner keyboard = new Scanner(System.in);
@@ -27,7 +29,9 @@ public class Email {
         final int length = chars.length();
         String userPassword = "";
 
-        System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+
         System.out.print("Your company email is ");
         System.out.print(email);
         System.out.println("\n");
@@ -44,70 +48,73 @@ public class Email {
         System.out.print(userPassword);
         System.out.print("\n\n");
 
-        System.out.println("LOGIN PAGE");
-        System.out.println("          _________________________");
-        System.out.print("Username | ");
-        username = keyboard.nextLine();
-        System.out.print("         |________________________\n");
+        int loginNum = 0;
 
-        System.out.println("          _________________________");
-        System.out.print("Password | ");
-        typePassword = keyboard.nextLine();
-        System.out.print("         |________________________\n");
-
-
-        if(username.equals(email) && userPassword.equals(typePassword)){
-            System.out.print("\033[H\033[2J");  
-            System.out.flush();  
-            System.out.print("Welcome to your mailbox!\n");
-            System.out.println("You have one unread email");
-            
-            System.out.print("Type your command here(1.read, 2.exit 3.compose a message");
-            String action = keyboard.nextLine();
-
-            if (action.equals("1")){
-                System.out.println("From: " + company + "\nContents: You have been fired from your job!\nPlease leave with all your belongings by Monday.");
-                System.out.println("You have zero unread emails");   
-            } else if (action.equals("2")){
-                System.out.print("Enjoy the rest of your unemployed life!\nExiting...");
-                System.out.exit(0);
-            } else if (action.equals("3")){
-                System.out.print("Who is your recipient(s): ");
-                String recipient = keyboard.nextLine();
-                System.out.print("Subject: ");
-                String subject = keyboard.nextLine();
-                System.out.print("What is the message: ");
-                String message = keyboard.nextLine();
-                
-             
-  
-                System.out.print("\nTo: "+ recipient + "Subject: " + subject + "\nFrom: " + firstName + lastName 
-                + "\nMessage: " + message);
-                
-            }
-            else {
-                System.out.println("Sorry that is not a command, please type 1 2 or 3");
-            }
-
-
-
-        } else {
-            System.out.print("Sorry your username or password is incorrect. ");
-            
-            System.out.println("LOGIN PAGE");
+        while (loginNum < 3) {
+            System.out.println("\n\nLOGIN PAGE");
             System.out.println("          _________________________");
             System.out.print("Username | ");
             username = keyboard.nextLine();
-            System.out.print("         |________________________\n");
+            System.out.print("         |_________________________\n");
 
             System.out.println("          _________________________");
             System.out.print("Password | ");
             typePassword = keyboard.nextLine();
-            System.out.print("         |________________________\n");
+            System.out.print("         |_________________________\n");
+
+            if (username.equals(email) && userPassword.equals(typePassword)) {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+                System.out.print("Welcome to your mailbox!\n");
+                System.out.println("You have one unread email");
+
+                while (true) {
+
+                    System.out.print("\n\nType your command here (1.read, 2.exit 3.compose an email) ");
+                    final String action = keyboard.nextLine();
+
+                    if (action.equals("1")) {
+                        System.out.println("From: " + company
+                                + "\nContents: You have been fired from your job!\nPlease leave with all your belongings by Monday.");
+                        System.out.println("You have zero unread emails");
+
+                    } else if (action.equals("2")) {
+                        System.out.print("Enjoy the rest of your unemployed life!\nExiting...\n");
+                        System.exit(0);
+
+                    } else if (action.equals("3")) {
+                        System.out.print("Who is your recipient(s): ");
+                        final String recipient = keyboard.nextLine();
+                        System.out.print("Subject: ");
+                        final String subject = keyboard.nextLine();
+                        System.out.print("What is the message: ");
+                        final String message = keyboard.nextLine();
+
+                        System.out.print("\nTo: " + recipient + "\nSubject: " + subject + "\nMessage: " + message
+                                + "\nFrom: " + firstName + lastName);
+
+                    } else {
+                        System.out.println("Sorry that is not a command, please type 1 2 or 3");
+
+                    }
+
+                    System.out.print("\n\n\n");
+
+                }
+
+            } else {
+                loginNum++;
+                System.out.print("\n\n\n\n\n\n\n\n\n\n\n");
+                System.out.print("Sorry your username or password is incorrect. ");
+
+            }
+
         }
 
-       
+        System.out.println("You attempted your login info too many times\nPlease try again later");
+        System.out.println("Exiting...\n");
+        keyboard.close();
+        System.exit(0);
 
-      
     }
 }
