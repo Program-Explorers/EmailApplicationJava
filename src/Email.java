@@ -62,16 +62,30 @@ public class Email {
             System.out.print("Welcome to your mailbox!\n");
             System.out.println("You have one unread email");
             
-            System.out.print("Type your command here(1.read, 2.exit, 3.mark as unread)");
+            System.out.print("Type your command here(1.read, 2.exit 3.compose a message");
             String action = keyboard.nextLine();
 
             if (action.equals("1")){
-                
+                System.out.println("From: " + company + "\nContents: You have been fired from your job!\nPlease leave with all your belongings by Monday.");
+                System.out.println("You have zero unread emails");   
             } else if (action.equals("2")){
-
-            } else if(action.equals("3")){
-
-            } else {
+                System.out.print("Enjoy the rest of your unemployed life!\nExiting...");
+                System.out.exit(0);
+            } else if (action.equals("3")){
+                System.out.print("Who is your recipient(s): ");
+                String recipient = keyboard.nextLine();
+                System.out.print("Subject: ");
+                String subject = keyboard.nextLine();
+                System.out.print("What is the message: ");
+                String message = keyboard.nextLine();
+                
+             
+  
+                System.out.print("\nTo: "+ recipient + "Subject: " + subject + "\nFrom: " + firstName + lastName 
+                + "\nMessage: " + message);
+                
+            }
+            else {
                 System.out.println("Sorry that is not a command, please type 1 2 or 3");
             }
 
