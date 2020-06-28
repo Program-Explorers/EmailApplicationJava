@@ -48,12 +48,49 @@ public class Email {
         System.out.println("          _________________________");
         System.out.print("Username | ");
         username = keyboard.nextLine();
-        System.out.print("        |________________________\n");
+        System.out.print("         |________________________\n");
 
         System.out.println("          _________________________");
         System.out.print("Password | ");
         typePassword = keyboard.nextLine();
-        System.out.print("        |________________________\n");
+        System.out.print("         |________________________\n");
+
+
+        if(username.equals(email) && userPassword.equals(typePassword)){
+            System.out.print("\033[H\033[2J");  
+            System.out.flush();  
+            System.out.print("Welcome to your mailbox!\n");
+            System.out.println("You have one unread email");
+            
+            System.out.print("Type your command here(1.read, 2.exit, 3.mark as unread)");
+            String action = keyboard.nextLine();
+
+            if (action.equals("1")){
+                
+            } else if (action.equals("2")){
+
+            } else if(action.equals("3")){
+
+            } else {
+                System.out.println("Sorry that is not a command, please type 1 2 or 3");
+            }
+
+
+
+        } else {
+            System.out.print("Sorry your username or password is incorrect. ");
+            
+            System.out.println("LOGIN PAGE");
+            System.out.println("          _________________________");
+            System.out.print("Username | ");
+            username = keyboard.nextLine();
+            System.out.print("         |________________________\n");
+
+            System.out.println("          _________________________");
+            System.out.print("Password | ");
+            typePassword = keyboard.nextLine();
+            System.out.print("         |________________________\n");
+        }
 
        
 
